@@ -3,7 +3,7 @@ import { LoginPage } from '../page-objects/login.page';
 
 test.describe('Log in page', ()=>{
 
-  test('Valid log in', async ({ page }) => {
+  test('TC-001 - Valid log in', async({page})=>{
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
@@ -15,7 +15,7 @@ test.describe('Log in page', ()=>{
     await expect(page.locator('.app_logo')).toBeVisible()
   });
 
-  test('Invalid username', async({page})=>{
+  test('TC-002 - Invalid username', async({page})=>{
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
@@ -29,7 +29,7 @@ test.describe('Log in page', ()=>{
     await expect(page.locator('[data-test="error"]')).toContainText('Username and password do not match any user in this service')
   })
 
-  test('Invalid password', async({page})=>{
+  test('TC-003 - Invalid password', async({page})=>{
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
@@ -43,7 +43,7 @@ test.describe('Log in page', ()=>{
     await expect(page.locator('[data-test="error"]')).toContainText('Username and password do not match any user in this service')
   })
 
-  test('Empty username', async({page}) => {
+  test('TC-004 - Empty username', async({page}) => {
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
@@ -57,7 +57,7 @@ test.describe('Log in page', ()=>{
     await expect(page.locator('[data-test="error"]')).toContainText('Username is required')
   })
 
-  test('Empty password', async({page}) => {
+  test('TC-005 - Empty password', async({page}) => {
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
@@ -71,7 +71,7 @@ test.describe('Log in page', ()=>{
     await expect(page.locator('[data-test="error"]')).toContainText('Password is required')
   })
 
-  test('Both fields empty', async({page}) => {
+  test('TC-006 - Both fields empty', async({page}) => {
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
@@ -85,7 +85,7 @@ test.describe('Log in page', ()=>{
     await expect(page.locator('[data-test="error"]')).toContainText('Username is required')
   })
 
-  test('Locked out user', async({page}) => {
+  test('TC-007 - Locked out user', async({page}) => {
     const login_Page = new LoginPage(page)
 
     await page.goto('https://www.saucedemo.com/');
