@@ -118,7 +118,7 @@ test.describe('Product page', ()=>{
         const product_Page = new ProductPage(page) 
 
         // Verify that the default sorting option is 'Name (A to Z)'
-        const sortingValue = product_Page.getActiveSortingOption()
+        const sortingValue = await product_Page.getActiveSortingOption()
 
         expect(sortingValue).toBe('Name (A to Z)')
             
@@ -160,7 +160,7 @@ test.describe('Product page', ()=>{
 
         //Remove item from the cart
         await product_Page.removeProductFromCart('Sauce Labs Backpack')
-        
+
         //Verify badge is not visible anymore
         await expect(await product_Page.getCartBadge()).not.toBeVisible()
     })
