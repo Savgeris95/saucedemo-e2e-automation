@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../page-objects/login.page';
 import { HelperPage } from '../page-objects/helper.page';
 import { ProductPage } from '../page-objects/product.page';
+import { CommonPage } from '../page-objects/common.page';
 
 test.describe('Product page', ()=>{
     
@@ -141,28 +142,30 @@ test.describe('Product page', ()=>{
 
     test('TC-007 — Add product to cart', async({page})=>{
         const product_Page = new ProductPage(page)
+        const common_Page = new CommonPage(page)
 
         // Add 'Sauce Labs Backpack' to the cart
         await product_Page.addProductToCart('Sauce Labs Backpack')
 
         // Verify that the badge with number 1 appears
-        expect(await product_Page.getCartBadgeNumber()).toEqual('1')
+        expect(await common_Page.getCartBadgeNumber()).toEqual('1')
     })
 
     test('TC-008 — Remove product from cart', async({page})=>{
         const product_Page = new ProductPage(page)
+        const common_Page = new CommonPage(page)
         // Add 'Sauce Labs Backpack' to the cart
 
         await product_Page.addProductToCart('Sauce Labs Backpack')
 
         // Verify that the badge with number 1 appears
-        expect(await product_Page.getCartBadgeNumber()).toEqual('1')
+        expect(await common_Page.getCartBadgeNumber()).toEqual('1')
 
         //Remove item from the cart
         await product_Page.removeProductFromCart('Sauce Labs Backpack')
 
         //Verify badge is not visible anymore
-        await expect(await product_Page.getCartBadge()).not.toBeVisible()
+        await expect(common_Page.getCartBadge()).not.toBeVisible()
     })
 
 })

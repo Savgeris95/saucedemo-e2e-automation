@@ -36,11 +36,5 @@ export class ProductPage{
         await this.page.locator('[data-test="inventory-item-description"]').filter({hasText: product}).getByRole('button', {name: 'Remove'}).click()
     }
 
-    async getCartBadgeNumber(){
-        return await this.page.locator('[data-test="shopping-cart-badge"]').textContent()
-    }
-
-    async getCartBadge(){
-        return this.page.locator('[data-test="shopping-cart-badge"]')
-    }
+    
 }
