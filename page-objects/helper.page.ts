@@ -1,8 +1,13 @@
+import { Page } from "@playwright/test"
 
 
 export class HelperPage{
 
+    readonly page: Page
 
+    constructor(page: Page){
+        this.page = page
+    }
 
     // This function gets an array of string values and returns the same array but String values are now Number values
     stringToNumberAnArray(array: string[]){

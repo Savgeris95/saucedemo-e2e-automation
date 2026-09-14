@@ -1,11 +1,13 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 
 export class ProductPage{
     readonly page: Page
+    readonly productPageLogo: Locator
 
     constructor(page: Page){
         this.page = page
+        this.productPageLogo = page.locator('.app_logo')
     }
 
     async getAllProducts(){
