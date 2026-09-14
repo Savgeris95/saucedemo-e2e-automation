@@ -15,4 +15,8 @@ export class CommonPage{
     getCartBadge(){
         return this.page.locator('[data-test="shopping-cart-badge"]')
     }
+
+    async goToCart(){
+        await this.page.locator('[data-test="shopping-cart-link"]').click()
+    }
 }

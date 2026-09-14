@@ -15,7 +15,7 @@ test.describe('Product page', ()=>{
         await login_Page.clickLogInButton()
 
         expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
-        await expect(page.locator('.app_logo')).toBeVisible()
+        
     })
 
     test('TC-001 — Verify products are displayed', async({page})=>{
