@@ -1,19 +1,16 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class CartPage{
+    
     readonly page: Page
+    readonly cartTitle:  Locator
 
     constructor(page: Page){
         this.page = page
+        this.cartTitle = page.getByText('Your cart')
     }
 
-    async goToCart(){
-        await this.page.locator('[data-test="shopping-cart-link"]').click()
-    }
-
-    getCartTitle(){
-        return this.page.getByText('Your cart')
-    }
+    
 
     getSpecificItemFromCart(productFromCart: string){
         return this.page.locator('[data-test="inventory-item"]').filter({hasText: productFromCart})

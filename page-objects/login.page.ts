@@ -1,11 +1,15 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class LoginPage {
 
     readonly page: Page
+    readonly loginPageLogo : Locator
+    readonly loginPageErrorMessage: Locator
 
     constructor(page: Page){
         this.page = page
+        this.loginPageLogo = page.locator('.app_logo')
+        this.loginPageErrorMessage = page.locator('[data-test="error"]')
     }
 
     async fillUsername(username: string){
