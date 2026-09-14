@@ -3,13 +3,15 @@ import { Locator, Page } from "@playwright/test";
 export class LoginPage {
 
     readonly page: Page
-    readonly loginPageLogo : Locator
+    
     readonly loginPageErrorMessage: Locator
+    readonly loginButton: Locator
 
     constructor(page: Page){
         this.page = page
-        this.loginPageLogo = page.locator('.app_logo')
+        
         this.loginPageErrorMessage = page.locator('[data-test="error"]')
+        this.loginButton = page.getByRole('button', {name: 'Login'})
     }
 
     async fillUsername(username: string){
