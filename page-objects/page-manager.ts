@@ -1,10 +1,11 @@
+import {Page} from '@playwright/test'
 import { LoginPage } from "../page-objects/login.page";
 import { ProductPage } from "../page-objects/product.page";
 import { CommonPage } from "../page-objects/common.page";
 import { CartPage } from "../page-objects/cart.page";
 import { CheckoutPage } from "../page-objects/checkout.page";
-import {Page} from '@playwright/test'
 import { HelperPage } from "./helper.page";
+
 
 export class PageManager{
 
