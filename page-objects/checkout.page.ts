@@ -19,7 +19,7 @@ export class CheckoutPage{
         this.errorMessage = page.locator('[data-test="error"]')
         this.paymentInformation = page.locator('[data-test="payment-info-label"]')
         this.shippingInformation = page.locator('[data-test="shipping-info-label"]')
-        this.shippingInformationValue = page.locator('data-test="shipping-info-value"')
+        this.shippingInformationValue = page.locator('[data-test="shipping-info-value"]')
         this.priceTotalLabel = page.locator('[data-test="total-info-label"]')
         this.itemSubTotalLabel = page.locator('[data-test="subtotal-label"]')
         this.taxValueLabel = page.locator('[data-test="tax-label"]')
