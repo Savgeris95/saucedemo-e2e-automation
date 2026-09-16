@@ -1,10 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../fixtures/fixtures";
 import { PageManager } from "../page-objects/page-manager";
 
 test.describe('Checkout Page', () => {
 
-    test('TC-001 — Verify Checkout Information page is displayed', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-001 — Verify Checkout Information page is displayed', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -16,15 +15,14 @@ test.describe('Checkout Page', () => {
         await pageManager.cartPage().clickCheckoutButton();
     
         // Verify that the URL contains 'checkout-step-one.html'
-        expect(page.url()).toContain('checkout-step-one.html');
+        expect(pageManager.page.url()).toContain('checkout-step-one.html');
     
         // Verify that the 'Checkout: Your Information' title is visible
         await expect(pageManager.checkoutPage().checkoutPageTitle).toBeVisible();
     
     });
     
-    test('TC-002a — Verify required fields validation', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-002a — Verify required fields validation', async ({ pageManager }) => {
     
         // Go to the cart with no products added
         await pageManager.commonPage().goToCart();
@@ -43,8 +41,7 @@ test.describe('Checkout Page', () => {
     
     });
     
-    test('TC-002b — Empty First Name', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-002b — Empty First Name', async ({ pageManager }) => {
     
         // Go to the cart with no products added
         await pageManager.commonPage().goToCart();
@@ -64,12 +61,11 @@ test.describe('Checkout Page', () => {
         expect(await pageManager.checkoutPage().errorMessage.textContent()).toContain('Error: First Name is required');
     
         // Verify that the user is still on the Checkout page
-        expect(page.url()).toContain('checkout-step-one.html');
+        expect(pageManager.page.url()).toContain('checkout-step-one.html');
     
     });
     
-    test('TC-002c — Empty Last Name', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-002c — Empty Last Name', async ({ pageManager }) => {
     
         // Go to the cart with no products added
         await pageManager.commonPage().goToCart();
@@ -89,12 +85,11 @@ test.describe('Checkout Page', () => {
         expect(await pageManager.checkoutPage().errorMessage.textContent()).toContain('Error: Last Name is required');
     
         // Verify that the user is still on the Checkout page
-        expect(page.url()).toContain('checkout-step-one.html');
+        expect(pageManager.page.url()).toContain('checkout-step-one.html');
     
     });
     
-    test('TC-002d — Empty Zipcode', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-002d — Empty Zipcode', async ({ pageManager }) => {
     
         // Go to the cart with no products added
         await pageManager.commonPage().goToCart();
@@ -114,12 +109,11 @@ test.describe('Checkout Page', () => {
         expect(await pageManager.checkoutPage().errorMessage.textContent()).toContain('Error: Postal Code is required');
     
         // Verify that the user is still on the Checkout page
-        expect(page.url()).toContain('checkout-step-one.html');
+        expect(pageManager.page.url()).toContain('checkout-step-one.html');
     
     });
     
-    test('TC-003 — Verify checkout information can be submitted', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-003 — Verify checkout information can be submitted', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -139,12 +133,11 @@ test.describe('Checkout Page', () => {
         await pageManager.checkoutPage().clickContinueButton();
     
         // Verify that the user is redirected to the next checkout step
-        expect(page.url()).toContain('checkout-step-two.html');
+        expect(pageManager.page.url()).toContain('checkout-step-two.html');
     
     });
     
-    test('TC-004 — Verify checkout overview displays correct product information', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-004 — Verify checkout overview displays correct product information', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -173,8 +166,7 @@ test.describe('Checkout Page', () => {
         expect(await pageManager.checkoutPage().getProductQuantityOnCheckoutPage('Sauce Labs Backpack')).toBe('1');
     });
     
-    test('TC-005 — Verify checkout overview displays correct Payment Information', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-005 — Verify checkout overview displays correct Payment Information', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -200,8 +192,7 @@ test.describe('Checkout Page', () => {
         expect(await pageManager.checkoutPage().getPaymentInformationValue()).toMatch(/SauceCard #\d+/);
     });
     
-    test('TC-006 — Verify shipping information is displayed', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-006 — Verify shipping information is displayed', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -227,8 +218,7 @@ test.describe('Checkout Page', () => {
         await expect(pageManager.checkoutPage().shippingInformationValue).not.toBeEmpty();
     });
     
-    test('TC-007 — Verify total price', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-007 — Verify total price', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -268,8 +258,7 @@ test.describe('Checkout Page', () => {
     
     });
     
-    test('TC-008 — Complete order successfully', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-008 — Complete order successfully', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -297,8 +286,7 @@ test.describe('Checkout Page', () => {
     
     });
     
-    test('TC-009 — Verify Back Home button', async ({ page }) => {
-        const pageManager = new PageManager(page);
+    test('TC-009 — Verify Back Home button', async ({ pageManager }) => {
     
         // Add a product to the cart
         await pageManager.productPage().addProductToCart('Sauce Labs Backpack');
@@ -324,7 +312,7 @@ test.describe('Checkout Page', () => {
         await pageManager.checkoutPage().clickBackHomeButton();
     
         // Verify that the user is redirected back to the Products page (inventory.html)
-        expect(page.url()).toContain('inventory.html');
+        expect(pageManager.page.url()).toContain('inventory.html');
     
     });
 

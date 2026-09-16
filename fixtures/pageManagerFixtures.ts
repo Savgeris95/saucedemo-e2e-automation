@@ -26,6 +26,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
   
   pageManager: async ({ page }, use) => {
+    await page.goto('https://www.saucedemo.com/');
     await use(new PageManager(page));
   },
 });
