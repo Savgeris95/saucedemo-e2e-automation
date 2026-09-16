@@ -1,5 +1,4 @@
 import { test, expect } from "../fixtures/fixtures";
-import { PageManager } from "../page-objects/page-manager";
 
 test.describe('Checkout Page', () => {
 
@@ -37,7 +36,7 @@ test.describe('Checkout Page', () => {
         await expect(pageManager.checkoutPage().errorMessage).toBeVisible();
     
         // Verify that the user is still on the Checkout page
-        expect(page.url()).toContain('checkout-step-one.html');
+        expect(pageManager.page.url()).toContain('checkout-step-one.html');
     
     });
     

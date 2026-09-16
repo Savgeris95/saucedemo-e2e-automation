@@ -8,6 +8,13 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      STANDARD_USER_USERNAME: ${{ secrets.STANDARD_USER_USERNAME }}
+      STANDARD_USER_PASSWORD: ${{ secrets.STANDARD_USER_PASSWORD }}
+      INVALID_USER_USERNAME: ${{ secrets.INVALID_USER_USERNAME }}
+      INVALID_USER_PASSWORD: ${{ secrets.INVALID_USER_PASSWORD }}
+      LOCKED_USER_USERNAME: ${{ secrets.LOCKED_USER_USERNAME }}
+      LOCKED_USER_PASSWORD: ${{ secrets.LOCKED_USER_PASSWORD }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
