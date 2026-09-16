@@ -24,11 +24,13 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Check Playwright config
+      run: |
+        pwd
+        ls -la
+        cat playwright.config.ts
     - name: Run Playwright tests
       run: npx playwright test --reporter=line
-    - name: Find Playwright report
-      run: |
-        find . -type d -name "*report*" -o -name "playwright-report"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
