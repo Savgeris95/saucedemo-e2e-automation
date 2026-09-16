@@ -26,11 +26,9 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test --reporter=line
-    - name: Check report
+    - name: Find Playwright report
       run: |
-        pwd
-        ls -la
-        ls -la playwright-report
+        find . -type d -name "*report*" -o -name "playwright-report"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
