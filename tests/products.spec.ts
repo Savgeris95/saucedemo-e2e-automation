@@ -14,7 +14,8 @@ test.describe('Product Page', ()=>{
     test('TC-003 — Sort products A-Z', async({pageManager})=>{
         
         // Verify that the default sorting option is 'Name (A to Z)'
-        expect(await pageManager.productPage().getActiveSortingOption()).toBe('Name (A to Z)')
+        expect(await pageManager.productPage().getActiveSortingOption())
+            .toBe('Name (A to Z)')
 
         // Store the product names in their default order before applying the sorting
         const productNamesBeforeSorting = await pageManager.productPage().getProductNames()
@@ -45,7 +46,8 @@ test.describe('Product Page', ()=>{
     test('TC-004 — Sort products Z-A', async({pageManager})=>{
         
         // Verify that the default sorting option is 'Name (A to Z)'
-        expect(await pageManager.productPage().getActiveSortingOption()).toBe('Name (A to Z)')
+        expect(await pageManager.productPage().getActiveSortingOption())
+            .toBe('Name (A to Z)')
 
         // Store the product names in their default order before applying the sorting
         const productNamesBeforeSorting = await pageManager.productPage().getProductNames()
